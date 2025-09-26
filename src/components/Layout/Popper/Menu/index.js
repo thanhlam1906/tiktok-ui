@@ -15,14 +15,12 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     const renderItems = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
-            console.log(items);
             return (
                 <MenuItem
                     key={index}
                     data={item}
                     onClick={() => {
                         if (isParent) {
-                            console.log(item.children);
                             setHistory((prev) => [...prev, item.children]);
                         } else {
                             onChange(item);
