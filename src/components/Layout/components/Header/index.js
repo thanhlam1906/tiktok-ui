@@ -14,7 +14,7 @@ import classNames from 'classnames/bind';
 import images from '~/asset/images';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-
+import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
 import Menu from '~/components/Layout/Popper/Menu';
 import { UploadIcon } from '~/components/Icons';
@@ -22,6 +22,7 @@ import { MessageIcon } from '~/components/Icons';
 import { InboxIcon } from '~/components/Icons';
 import Image from '~/components/Images';
 import Search from '../Search';
+import routerConfig from '~/config/routes';
 
 const cx = classNames.bind(style);
 
@@ -96,10 +97,11 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
-                    <img src={images.logo} alt="Tiktok" />
-                </div>
-                {/* vi tri search */} <Search />
+                <Link to={routerConfig.home}>
+                    <img src={images.logo} alt="Tiktok" className={cx('logo')} />
+                </Link>
+
+                <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
