@@ -113,7 +113,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const currentUser = false; // Fake login
+    const currentUser = true; // Fake login
 
     const userMenu = [
         {
