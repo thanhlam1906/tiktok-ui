@@ -3,22 +3,36 @@ import classNames from 'classnames/bind';
 import style from './SuggestedAccounts.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import images from '~/asset/images';
+import Tippy from '@tippyjs/react/headless';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import AccountPreview from './AccountPreview/AccountPreview';
 const cx = classNames.bind(style);
 function AccountItem() {
-    return (
-        <div className={cx('account-item')}>
-            <img
-                className={cx('avatar')}
-                src="https://p9-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/d8a026b0518b0a234560636a7a722abe~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=e5297361&x-expires=1760508000&x-signature=YrGUfocy2oyYgzbTITqCeHdae1A%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2"
-                alt=""
-            />
-            <div className={cx('item-info')}>
-                <p className={cx('nickname')}>
-                    <strong>nguyen_van_a</strong>
-                    <FontAwesomeIcon icon={faCheckCircle} className={cx('check')} />
-                </p>
-                <p className={cx('name')}>Nguyễn Văn A</p>
+    function PreviewItem(props) {
+        return (
+            <div className={cx('preview')} tabIndex="-1" {...props}>
+                <PopperWrapper>
+                    <AccountPreview />
+                </PopperWrapper>
             </div>
+        );
+    }
+
+    return (
+        <div>
+            <Tippy interactive delay={[800, 0]} offset={[-20, 0]} placement="bottom" render={PreviewItem}>
+                <div className={cx('account-item')}>
+                    <img className={cx('avatar')} src={images.echxanh} alt="" />
+                    <div className={cx('item-info')}>
+                        <p className={cx('nickname')}>
+                            <strong>nguyen_van_a</strong>
+                            <FontAwesomeIcon icon={faCheckCircle} className={cx('check')} />
+                        </p>
+                        <p className={cx('name')}>Nguyễn Văn A</p>
+                    </div>
+                </div>
+            </Tippy>
         </div>
     );
 }

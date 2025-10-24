@@ -1,5 +1,52 @@
+/* Sidebar.module.scss */
+
 .wrapper {
-    width: 356px;
-    padding: 20px 0 26px 8px;
-    margin-left: -18px;
+    width: 340px; /* Hoặc chiều rộng sidebar của bạn */
+    height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 100px;
+    position: fixed;
+    // Quan trọng: Phải có overflow-y: auto để trình duyệt biết đây là vùng có thể cuộn
+    overflow-y: auto;
+
+    /* --- CSS để ẩn/hiện scrollbar --- */
+
+    /* Dành cho Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+    &:hover {
+        /* Hiện lại scrollbar cho Firefox khi hover */
+        scrollbar-color: #ccc #f1f1f1; /* màu con trượt và màu rãnh */
+    }
+
+    /* Dành cho các trình duyệt WebKit (Chrome, Safari, Edge, Opera) */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Rãnh của thanh cuộn (track) - mặc định ẩn */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Con trượt (thumb) - mặc định ẩn */
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    /* HIỆN LẠI SCROLLBAR KHI HOVER VÀO .wrapper */
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: #ccc; /* Màu của con trượt khi hiện */
+    }
+
+    &:hover::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Màu của rãnh trượt khi hiện */
+    }
+}
+
+.sidebar-content {
+    /* CSS cho nội dung bên trong nếu cần */
+    padding-bottom: 20px;
 }
